@@ -3,7 +3,7 @@ require 'json'
 
 class CreditCard
   # TODO: mixin the LuhnValidator using an 'include' statement
-  include 'LuhnValidator'
+  include LuhnValidator
 
   # instance variables with automatic getter/setter methods
   attr_accessor :number, :expiration_date, :owner, :credit_network
@@ -21,10 +21,10 @@ class CreditCard
     {
       # TODO: setup the hash with all instance vairables to serialize into json
       'creditcard' => {
-        'number' = number,
-        'expiration' = expiration_date,
-        'owner' = owner,
-        'credit_network' = credit_network
+        'number' => number,
+        'expiration' => expiration_date,
+        'owner' => owner,
+        'credit_network' => credit_network
       }
     }.to_json
   end
@@ -37,7 +37,7 @@ class CreditCard
   # return a new CreditCard object given a serialized (JSON) representation
   def self.from_s(card_s)
     # TODO: deserializing a CreditCard object
-    JSON.parse(creditcards.to_json)
+    JSON.parse(card_s.to_json)
   end
 
   # return a hash of the serialized credit card object
