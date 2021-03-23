@@ -7,7 +7,9 @@ module DoubleTranspositionCipher
     def self.row_swap(matrix,key)
       key.length.times do |i| 
         matrix[i], matrix[key[i]] = matrix[key[i]], matrix[i] if key[i] != i
-        key[i], key[key[i]] = key[key[i]], key[i] if key[i] != i
+        puts matrix.join
+        key[i], key[key[i]] = i, key[i] if key[i] != i
+        puts key.join
       end
       matrix
     end
@@ -79,5 +81,5 @@ puts key.join
 puts key.reverse.join
 temp = DoubleTranspositionCipher.row_swap(a, key)
 puts temp.join
-temp = DoubleTranspositionCipher.row_swap(a, key.reverse)
+temp = DoubleTranspositionCipher.row_swap(temp, key.reverse)
 puts temp.join
